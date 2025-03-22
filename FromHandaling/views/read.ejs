@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body {
+            background-color: #121212;
+            /* Dark background */
+            color: #ffffff;
+            /* White text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+        }
+
+        .user-cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .user-card {
+            background-color: #1e1e1e;
+            /* Slightly lighter background for cards */
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .user-card img {
+            width: 100%;
+            height: 150px;
+            background-color: #333;
+            /* Placeholder for image */
+        }
+
+        .user-card-content {
+            padding: 15px;
+        }
+
+        .user-card h3 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+
+        .user-card p {
+            font-size: 14px;
+            color: #bbbbbb;
+            margin: 0 0 15px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #2a2a2a;
+            align-items: center;
+        }
+
+        .actions a {
+            color: #007bff;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: transparent;
+            border: 1px solid #007bff;
+        }
+
+        .actions a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .delete-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .delete-button:hover {
+            background-color: #d43f3f;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="back">
+        <a href="/">Go to Home</a>
+    </div>
+
+    <h1>All Users</h1>
+    <div class="user-cards">
+        
+        <% users.forEach(function(user) { %>
+            <div class="user-card">
+                <img src="<%= user.image %>" alt="User Image">
+                <div class="user-card-content">
+                   <h3><%= user.name  %></h3>
+                    <p><%= user.email %></p>
+                </div>
+                <div class="actions">
+                    <a href="/edit/<%= user._id %>">Edit User</a>
+                  
+                    <a href="/delete/<%= user._id %>" class="delete-button">Delete User</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</body>
+
+</html>
